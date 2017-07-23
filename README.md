@@ -44,6 +44,22 @@ which returns:
      242 source/sketch.js
 
 
+[master 70d0a7f] - broke out the classes in sketch.js into their own modules. Re-running
 
+    wc -l source/*.js
+    
+gives us
+      33 source/DNA.js
+      53 source/Population.js
+      70 source/Rocket.js
+      14 source/Statistics.js
+      64 source/sketch.js
+     234 total
+     
+and the the draw call time is now:
 
+- population,Average Draw Time(ms), min Draw Time(ms), max Draw Time(ms)
+- 10, 0.86, 0.55, 5.25
+- 20, 0.85, 0.55, 5.25
 
+still about the same.
