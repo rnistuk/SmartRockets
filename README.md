@@ -23,7 +23,7 @@ GOALS:
 - remove global variables
 - increase the efficiency of the code (reduce the time that it takes to do it's job.)
 
-Sunday July 23: 
+Sunday July 23: see master fd564c8
 Let's start our profiling by displaying the time for the p5 draw function to do it's job, or more specifically the time for the rocket related code inside the draw function. My dev computer is a mid 2012 15-inch MacBook Pro, with 2.7 GHz Intel Cor i7 and 16 GB 1333 MHz DDR3 memory. So you will probably get better results than I do. The simulation has 25 rockets, so each draw call moves 25 rockets one step. Here are the stats with code based on what I learned from Daniel:
 
 - population,Average Draw Time(ms), min Draw Time(ms), max Draw Time(ms)
