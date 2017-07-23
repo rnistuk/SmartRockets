@@ -59,7 +59,6 @@ function draw() {
     
     function reportDrawStats(drawStats) {
         return `Average draw time at population: ${populationCount} --  ${drawStats.ave().toFixed(2)}ms min:${drawStats.min.toFixed(2)}ms max:${drawStats.max.toFixed(2)}ms`;
-        
     }
     
 }
