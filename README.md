@@ -34,3 +34,16 @@ Let's start our profiling by displaying the time for the p5 draw function to do 
 -  50, 0.88, 0.58, 6.31
 
 So our baseline draw time to beat is 0.88ms.
+
+The other basline we need is the number of lines of code in the application, I'll use the wc utility on the commandline like this:
+
+    wc -l source/*.js
+    
+which returns:
+
+     242 source/sketch.js
+
+
+
+
+
