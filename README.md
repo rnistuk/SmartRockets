@@ -63,3 +63,18 @@ and the the draw call time is now:
 - 20, 0.85, 0.55, 5.25
 
 still about the same.
+
+Wed, August 9, 2017
+Did some really simple cleaning up of sketch.js, just some refactoring to make the draw function easier to read.
+- Draw Time(ms), min, max
+- 0.74, 0.55, 4.69
+
+Source code size stats..
+    wc -l source/*.js
+      33 source/DNA.js
+      53 source/Population.js
+      70 source/Rocket.js
+      14 source/Statistics.js
+      68 source/sketch.js
+     238 total
+
