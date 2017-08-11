@@ -5,7 +5,9 @@ Daniel Shiffman is an awesome youtuber who has a channel called "The Coding Trai
 
 From Daniel I have learned a lot about the p5 library and basic Javascript programming, but in my day job I work with another fantastic developer, Scott Burch ( https://github.com/scottburch ), who has shown me how to apply functional programming to Javascript. 
 
-What I want to do here is take what Daniel has done and see if I can apply what Scott has taught me. I would like to take Daniel's code, which is easy for a new developer to understand and turn it into code that is "production" ready, that is still easy to understand, but may use bits of Javascript that new users are unfamiliar with. I want to use a functional style to reduce the size of the code and speed things up a little and make things a bit more readable.
+What I want to do here is take what Daniel has done and see if I can apply what Scott has taught me. I'll take Daniel's code, which is easy for a new developer to understand and turn it into code that is a more functional style, and is still easy to understand, but may use bits of Javascript that new users are unfamiliar with. 
+
+I want to use a functional style to reduce the size of the code, speed things up a little and make things a bit more readable.
 
 
 Smart Rockets
@@ -24,6 +26,9 @@ GOALS:
 
 STRETCH GOALS:
 - add unit tests
+- change the behaviour of the rockets to be more realistic. 
+    - use the rocket equation to take into account gravity, and fuel use.
+    - apply realistic forces to change the direction of the rocket smoothly.
 
 Sunday July 23: see master fd564c8
 Let's start our profiling by displaying the time for the p5 draw function to do it's job, or more specifically the time for the rocket related code inside the draw function. My dev computer is a mid 2012 15-inch MacBook Pro, with 2.7 GHz Intel Cor i7 and 16 GB 1333 MHz DDR3 memory. So you will probably get better results than I do. The simulation has 25 rockets, so each draw call moves 25 rockets one step. Here are the stats with code based on what I learned from Daniel:
@@ -111,3 +116,4 @@ Source code stats:
 By breaking the code up into separate modules I haven't increased the size of the code too much. 
 
 The next step will be to break out the target and obstacle into thier own classes/functions.
+Or, I'd like to make the reporting a bit nicer, give it a nice dashboard instead of just popping up a line of text under the canvas.
