@@ -18,10 +18,12 @@ You'll see a population of rockets (long lines) start at the bottom of the scree
 GOALS:
 - profile the code to make sure that the changes I make are helping.
 - produce reports on how the application is solving the problem.
-- add unit tests
 - reduce the size of the code base
 - remove global variables
 - increase the efficiency of the code (reduce the time that it takes to do it's job.)
+
+STRETCH GOALS:
+- add unit tests
 
 Sunday July 23: see master fd564c8
 Let's start our profiling by displaying the time for the p5 draw function to do it's job, or more specifically the time for the rocket related code inside the draw function. My dev computer is a mid 2012 15-inch MacBook Pro, with 2.7 GHz Intel Cor i7 and 16 GB 1333 MHz DDR3 memory. So you will probably get better results than I do. The simulation has 25 rockets, so each draw call moves 25 rockets one step. Here are the stats with code based on what I learned from Daniel:
@@ -64,7 +66,7 @@ and the the draw call time is now:
 
 still about the same.
 
-Wed, August 9, 2017
+Wednesday, August 9, 2017
 Did some really simple cleaning up of sketch.js, just some refactoring to make the draw function easier to read.
 - Draw Time(ms), min, max
 - 0.74, 0.55, 4.69
@@ -77,4 +79,35 @@ Source code size stats..
       14 source/Statistics.js
       68 source/sketch.js
      238 total
+     
+Friday, August 11 2017
+More clean up: 
+    - refactored code into smaller functions
+    - Replaced 'if/else' blocks with '?:' where possible
+    - Replaced for loops with forEach and map where possible
+    
+Not sure how to deal with this type of thing:
+    var x = [];
+    for (var i=0; i<10; ++i) {
+        x.push(new Thing());
+    }
+So, I'll leave that alone for now.
 
+- population,Average Draw Time(ms), min Draw Time(ms), max Draw Time(ms)
+- 10, 0.88ms, 0.58ms, 4.87ms
+- 20, 0.86ms, 0.58ms, 6.08ms
+    
+It seems that refactoring to a more functional style didn't really speed things up all that much.
+
+Source code stats:
+    wc -l source/*.js
+      30 source/DNA.js
+      65 source/Population.js
+      67 source/Rocket.js
+      14 source/Statistics.js
+      68 source/sketch.js
+     244 total
+
+By breaking the code up into separate modules I haven't increased the size of the code too much. 
+
+The next step will be to break out the target and obstacle into thier own classes/functions.

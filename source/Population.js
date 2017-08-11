@@ -9,26 +9,38 @@ function Population() {
     }
     
     this.evaulate = function() {
+        var maxfit = 0;
         
-        var maxfit =0;
-        for (var i=0; i< this.popsize; ++i) {
-            this.rockets[i].calcFitness();
-            if(this.rockets[i].fitness > maxfit) {
-                maxfit = this.rockets[i].fitness;
-            }
+        [this.rockets, maxfit] = calculateFitnesses(this.rockets);
+        this.rockets = normalizeFitnesses(this.rockets, maxfit);
+        this.matingpool = createMatingPool(this.rockets);
+        
+        function calculateFitnesses(rockets) {
+            var maxfit = 0;
+            rockets = rockets.map( r => {
+                r.calcFitness();
+                maxfit = Math.max(maxfit,r.fitness);
+                return r;
+            });
+            return [rockets, maxfit];
         }
         
-        for(var i = 0; i<this.popsize; ++i) {
-            this.rockets[i].fitness /= maxfit;
+        function normalizeFitnesses(rockets, maxfit) {
+            return rockets.map(r => {
+                r.fitness /= maxfit;
+                return r;
+            });
         }
         
-        this.matingpool = [];
-        
-        for(var i = 0; i<this.popsize; ++i) {
-            var n = this.rockets[i].fitness * 100;
-            for (var j =0; j<n; j++) {
-                this.matingpool.push(this.rockets[i]);
-            }
+        function createMatingPool(rockets) {
+            let popsize = rockets.length;
+            var matingPool = [];
+            rockets.forEach(rocket => {
+                for(var j = 0; j< rocket.fitness * 100; j++) {
+                    matingPool.push(rocket);
+                }
+            });
+            return matingPool;
         }
     }
     
@@ -45,9 +57,9 @@ function Population() {
     }
     
     this.run = function () {
-        for (var i = 0; i < this.popsize ; i++) {
-            this.rockets[i].update();
-            this.rockets[i].show();
-        }
+        this.rockets.forEach((r) => {
+            r.update();
+            r.show();
+        });
     }
 }

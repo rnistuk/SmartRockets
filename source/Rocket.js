@@ -4,11 +4,8 @@ function Rocket(dna) {
     this.acc = createVector();
     this.completed = false;
     this.crashed =false;
-    if (dna) {
-        this.dna = dna;
-    } else {
-        this.dna = new DNA();
-    }
+    this.dna = !!dna ? dna : new DNA();
+    
     this.fitness = 0;
     
     this.applyForce = function(force) {
