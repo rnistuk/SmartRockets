@@ -1,10 +1,8 @@
-function Population() {
-    
+function Population(size=25) {
     this.rockets = [];
-    this.popsize = 25;
     this.matingpool = [];
     
-    for(var i = 0; i < this.popsize ; i++) {
+    for(var i = 0; i < size ; i++) {
         this.rockets[i] = new Rocket();
     }
     
@@ -33,7 +31,6 @@ function Population() {
         }
         
         function createMatingPool(rockets) {
-            let popsize = rockets.length;
             var matingPool = [];
             rockets.forEach(rocket => {
                 for(var j = 0; j< rocket.fitness * 100; j++) {
@@ -57,9 +54,14 @@ function Population() {
     }
     
     this.run = function () {
+        var finished = 0;
         this.rockets.forEach((r) => {
             r.update();
             r.show();
+            finished += r.crashed || r.completed ? 1 : 0;
         });
+        return finished;
     }
+    
+    this.size = function() { return this.rockets.length; }
 }

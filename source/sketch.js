@@ -7,6 +7,8 @@ var populationCount = 0;
 var target;
 var maxForce = 0.2;
 
+const IGNORING_MSG = "Ignoring stats for first 3 populations.";
+
 const drawStats = new Statistics();
 const popStats = new Statistics(); 
 
@@ -27,24 +29,21 @@ function draw() {
     const startTime = performance.now();
     
     background(0);
-    population.run();
+    let finishedCount = population.run();
+    
     count++;
-    count === lifespan && resetPopulation();
+    (count === lifespan || finishedCount === population.size()) && resetPopulation();
     
     lifeP.html(`Population: ${populationCount}   life count:${count}`);
     
     drawTarget();
     drawObstacle();
     
-    populationCount > 3 ? updatePerformanceStats(startTime) : drawTimeP.html("Ignoring stats for first 3 populations.");
+    populationCount > 3 ? updatePerformanceStats(startTime) : drawTimeP.html(IGNORING_MSG);
     
-    function drawTarget() {
-        ellipse(target.x, target.y,16,16);
-    }
+    function drawTarget() { ellipse(target.x, target.y,16,16); }
     
-    function drawObstacle() {
-        rect(100,150, 200,10);
-    }
+    function drawObstacle() { rect(100,150, 200,10); }
     
     function resetPopulation() {
         populationCount++;
