@@ -1,4 +1,4 @@
-# smart_rockets
+# SmartRockets
 Modifying Daniel Shiffman's Smart Rockets
 
 Daniel Shiffman is an awesome youtuber who has a channel called "The Coding Train"  ( https://www.youtube.com/channel/UCvjgXvBlbQiydffZU7m1_aw ) where he provides wonderful javascript tutorials using the p5 library ( https://p5.js ).
