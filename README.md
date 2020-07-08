@@ -117,3 +117,8 @@ By breaking the code up into separate modules I haven't increased the size of th
 
 The next step will be to break out the target and obstacle into thier own classes/functions.
 Or, I'd like to make the reporting a bit nicer, give it a nice dashboard instead of just popping up a line of text under the canvas.
+
+# Acknowledgments
+I started this repo by following [Daniel Shiffman's](https://www.youtube.com/channel/UCvjgXvBlbQiydffZU7m1_aw) Youtube video [Coding Challenge #29: Smart Rockets in p5.js](https://www.youtube.com/watch?v=bGz7mv2vD6g) very closely, you can find the repo associated with his video here [CC_029_SmartRockets](https://github.com/CodingTrain/website/tree/665d88d18fda2e7d02183709e0bbb7597d10debe/CodingChallenges/CC_029_SmartRockets).
+
+
