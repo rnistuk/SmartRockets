@@ -1,19 +1,19 @@
 # macOS
-  .DS_Store
-  **/.DS_Store
+.DS_Store
+**/.DS_Store
 
-  # JetBrains IDEs
-  .idea/
+# JetBrains IDEs
+.idea/
 
-  # Editors
-  .vscode/
-  *.swp
-  *~
+# Editors
+.vscode/
+*.swp
+*~
 
-  # Logs
-  *.log
+# Logs
+*.log
 
-  addons/
+addons/
 
-  # Node (in case tooling is added later)
-  node_modules/
+# Node (in case tooling is added later)
+node_modules/
