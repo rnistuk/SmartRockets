@@ -80,8 +80,9 @@ Tracking the agreed plan. Check items off as completed.
 - [x] **.gitignore** (repo root) — ✅ `.DS_Store`, `.idea/`, editors, `addons/`.
       NOTE: first version had leading whitespace on every line (silently matched
       nothing); fixed + verified `.idea/`/`.DS_Store` now ignored. Commit pending.
-- [x] **Untrack `.idea/`** — N/A: `.idea/` and `.DS_Store` were untracked (`??`),
-      never committed, so `.gitignore` alone suffices — no `git rm --cached` needed.
+- [x] **Untrack `.idea/`** — ✅ done. `.DS_Store` was only ever untracked, but
+      `.idea/.gitignore` had been committed (in `ee24e90`), so it did need
+      `git rm -r --cached .idea/`. Now untracked + ignored.
 
 ### Done beyond the original plan
 - ✅ `validateConfig()` guard (fail fast on malformed obstacle config).
