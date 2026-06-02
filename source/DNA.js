@@ -8,7 +8,7 @@ function DNA(genes) {
     }
     
     this.crossover = function (partner) {
-        var mid = floor(random(this.genes.length));
+        const mid = floor(random(this.genes.length));
         const newgenes = this.genes.map(
             (g,i) => ( i > mid ? g : partner.genes[i]));
         return new DNA(newgenes);

@@ -30,7 +30,7 @@ function Population(size= CONFIG.population.size) {
         }
         
         function createMatingPool(rockets) {
-            var matingPool = [];
+            let matingPool = [];
             rockets.forEach( rocket => {
                 const copies = rocket.fitness * CONFIG.population.matingPoolScale;
                 for (let j = 0 ; j < copies ; j++) {
