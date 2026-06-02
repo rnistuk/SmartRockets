@@ -74,10 +74,12 @@ Tracking the agreed plan. Check items off as completed.
       change. Guarded by `validateConfig()`.
 
 ### Docs / housekeeping
-- [x] **README.md** — ✅ rewritten on the PurpleBooth template: config.js as single
-      source, module layout, local-web-server run path.
-- [x] **LICENSE.md** — ✅ added MIT license (2017-2026), linked from README.
-- [x] **.gitignore** (repo root) — ✅ `.DS_Store`, `.idea/`, editor/OS cruft.
+- [x] **README.md** — ✅ rewritten on the PurpleBooth template (config.js as single
+      source, module layout, p5 2.0.5 / DOM-in-core); replaced the old overview README.
+- [x] **LICENSE.md** — ✅ MIT license added (2017-2026), linked from README.
+- [x] **.gitignore** (repo root) — ✅ `.DS_Store`, `.idea/`, editors, `addons/`.
+      NOTE: first version had leading whitespace on every line (silently matched
+      nothing); fixed + verified `.idea/`/`.DS_Store` now ignored. Commit pending.
 - [x] **Untrack `.idea/`** — N/A: `.idea/` and `.DS_Store` were untracked (`??`),
       never committed, so `.gitignore` alone suffices — no `git rm --cached` needed.
 
