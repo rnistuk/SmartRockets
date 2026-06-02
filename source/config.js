@@ -16,7 +16,7 @@ const CONFIG = {
         completionRadius: 10,
         completedFitnessBonus: 10,
         crashedFitnessPenalty: 10.0,
-        body: { length: 25, width: 5 }
+        body: { length: 16, width: 9 }
     },
 
     target: { y:50, diameter: 16 },
@@ -26,6 +26,17 @@ const CONFIG = {
     ],
 
     stats: { warmupPopulations: 3 },
+
+    theme: {
+        background:      [11, 19, 43],          // deep navy
+        target:          [126, 255, 165],       // green  — the goal
+        obstacle:        [255, 110, 90],         // warm red — the hazard
+        rocketActive:    [125, 200, 255, 110],   // translucent cyan — in flight
+        rocketCompleted: [126, 255, 165, 220],   // green — reached target
+        rocketCrashed:   [255, 110, 90, 70],     // dim red — crashed
+        flame:           [255, 190, 80, 180],
+        trailFade:       35,
+    },
 }
 
 function validateConfig() {

@@ -25,11 +25,19 @@ function resetPopulation() {
 }
 
 function drawTarget() {
+    push();
+    noStroke();
+    fill(...CONFIG.theme.target);
     ellipse(target.x, target.y, CONFIG.target.diameter, CONFIG.target.diameter);
+    pop();
 }
 
 function drawObstacles() {
+    push();
+    noStroke();
+    fill(...CONFIG.theme.obstacle);
     CONFIG.obstacles.forEach(o => rect(o.x, o.y, o.w, o.h));
+    pop();
 }
 
 function updateHud(startTime) {
@@ -52,7 +60,7 @@ function reportDrawStats() {
 function draw() {
     const startTime = performance.now();
 
-    background(0);
+    background(...CONFIG.theme.background, CONFIG.theme.trailFade);
     const finishedCount = population.run();
     count++;
 

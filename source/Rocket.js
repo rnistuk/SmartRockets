@@ -51,11 +51,29 @@ function Rocket(dna) {
     this.show = function() {
         push();
         noStroke();
-        fill(255, 150);
+
         translate( this.pos.x, this.pos.y);
         rotate(this.vel.heading());
-        rectMode(CENTER);
-        rect(0, 0, CONFIG.rocket.body.length, CONFIG.rocket.body.width);
+
+        const len = CONFIG.rocket.body.length;
+        const w = CONFIG.rocket.body.width;
+
+        if (!this.completed && !this.crashed) {
+            const flame = len * (0.5 + random(0.5));   // flicker each frame
+            fill(...CONFIG.theme.flame);
+            triangle(-len / 2, -w / 4,
+                -len / 2,  w / 4,
+                -len / 2 - flame, 0);
+        }
+
+        if (this.completed)    fill(...CONFIG.theme.rocketCompleted);
+        else if (this.crashed) fill(...CONFIG.theme.rocketCrashed);
+        else                   fill(...CONFIG.theme.rocketActive);
+
+        triangle(len / 2, 0,        // nose (front, points along travel)
+            -len / 2, -w / 2,   // back-left
+            -len / 2,  w / 2);  // back-right
+
         pop();
-    }
+    };
 }
