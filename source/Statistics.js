@@ -2,7 +2,7 @@ function Statistics() {
     this.count = 0;
     this.total = 0.0;
     this.min = Number.POSITIVE_INFINITY;
-    this.max = Number.MIN_VALUE;
+    this.max = Number.NEGATIVE_INFINITY;
     
     this.update = (v) => {
         this.total += v;

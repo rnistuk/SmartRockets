@@ -1,52 +1,52 @@
-function Population(size=25) {
+function Population(size= CONFIG.population.size) {
     this.rockets = [];
-    this.matingpool = [];
+    this.matingPool = [];
     
-    for(var i = 0; i < size ; i++) {
+    for(let i = 0; i < size ; i++) {
         this.rockets[i] = new Rocket();
     }
     
-    this.evaulate = function() {
-        var maxfit = 0;
-        
-        [this.rockets, maxfit] = calculateFitnesses(this.rockets);
-        this.rockets = normalizeFitnesses(this.rockets, maxfit);
-        this.matingpool = createMatingPool(this.rockets);
+    this.evaluate = function() {
+        let maxFit;
+        [this.rockets, maxFit ] = calculateFitnesses(this.rockets);
+        this.rockets = normalizeFitnesses(this.rockets, maxFit);
+        this.matingPool = createMatingPool(this.rockets);
         
         function calculateFitnesses(rockets) {
-            var maxfit = 0;
+            let maxFit = 0;
             rockets = rockets.map( r => {
                 r.calcFitness();
-                maxfit = Math.max(maxfit,r.fitness);
+                maxFit = Math.max(maxFit,r.fitness);
                 return r;
             });
-            return [rockets, maxfit];
+            return [rockets, maxFit];
         }
         
-        function normalizeFitnesses(rockets, maxfit) {
+        function normalizeFitnesses(rockets, maxFit) {
             return rockets.map(r => {
-                r.fitness /= maxfit;
+                r.fitness /= maxFit;
                 return r;
             });
         }
         
         function createMatingPool(rockets) {
             var matingPool = [];
-            rockets.forEach(rocket => {
-                for(var j = 0; j< rocket.fitness * 100; j++) {
+            rockets.forEach( rocket => {
+                const copies = rocket.fitness * CONFIG.population.matingPoolScale;
+                for (let j = 0 ; j < copies ; j++) {
                     matingPool.push(rocket);
                 }
             });
             return matingPool;
         }
     }
-    
+
     this.selection = function() {
-        var newRockets = [];
-        for (var i=0 ; i < this.rockets.length; i++) {
-            var parentA = random(this.matingpool).dna;
-            var parentB = random(this.matingpool).dna;
-            var child = parentA.crossover(parentB);
+        const newRockets = [];
+        for (let i= 0 ; i < this.rockets.length; i++) {
+            const parentA = random(this.matingPool).dna;
+            const parentB = random(this.matingPool).dna;
+            const child = parentA.crossover(parentB);
             child.mutation();
             newRockets[i] = new Rocket(child);
         }
@@ -54,8 +54,8 @@ function Population(size=25) {
     }
     
     this.run = function () {
-        var finished = 0;
-        this.rockets.forEach((r) => {
+        let finished = 0;
+        this.rockets.forEach(r => {
             r.update();
             r.show();
             finished += r.crashed || r.completed ? 1 : 0;
